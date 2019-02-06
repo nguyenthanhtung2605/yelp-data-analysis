@@ -2,7 +2,7 @@
 
 * **Thanh Tung Nguyen (#:40042891)** 
 
-* **Huy Tran (#:40023289)** 
+* **Huy Nguyen (#:40023289)** 
 
 ## 1. ABSTRACT
 
