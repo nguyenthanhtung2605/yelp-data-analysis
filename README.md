@@ -52,7 +52,7 @@ yelp_academic_dataset_user.json (2.32 GB)
 These data files will be processed and converted to tabular-format data files.
 
 
-* **Canadian Postal Codes** - *48.8 MB* - [Posal Code Matrix] (https://fusiontables.google.com/DataSource?docid=1H_cl-oyeG4FDwqJUTeI_aGKmmkJdPDzRNccp96M&hl=en_US&pli=1) 
+* **Canadian Postal Codes - Google Fusion Tables** - *48.8 MB* - [Canadian Postal Codes](https://fusiontables.google.com/DataSource?docid=1H_cl-oyeG4FDwqJUTeI_aGKmmkJdPDzRNccp96M&hl=en_US&pli=1) 
 
 Calculate the great circle distance and midpoint between two latitude/longitude points
 
