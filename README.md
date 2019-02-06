@@ -1,7 +1,8 @@
 # YELP Restaurant Data Analysis and Recommendation 
 
-Thanh Tung Nguyen (#:40042891)
-Huy Tran (#:40023289)
+* **Thanh Tung Nguyen (#:40042891)** 
+
+* **Huy Tran (#:40023289)** 
 
 ## 1. ABSTRACT
 
@@ -14,18 +15,23 @@ This proposal is designed to suggest solutions for the unavailability of popular
 In order to tackle the above drawbacks, we propose MetroEye, a mobile service for accurate metro trip tracking. MetroEye records ambient sounds using smartphone microphones, and infers three important states during a whole subway trip: (1) Moving, the state that a passenger is on a running train. (2) Interchanging, the state that a passenger at an interchange. (3) Stopping, the state that a passenger is on a train halting at a station. These movement statuses will provide a mechanism for the application to trigger a wake cup alarm to subway passengers.
 
 **Context** 
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 **Objectives**
+
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
 
 **Presentation**
+
 At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
 
 **Problem to Solve**
+
 Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere pssimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
 
 **Related Work**
+
 Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
 
 ## 3. MATERIALS AND METHODS
@@ -33,6 +39,7 @@ Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit la
 ### 3.1 Materials
 
 * **Dataset** - *4 GB* - [Yelp Dataset](https://www.kaggle.com/yelp-dataset/yelp-dataset)
+
 A trove of reviews, businesses, users, tips, and check-in data.
 
 ```
@@ -45,7 +52,8 @@ yelp_academic_dataset_user.json (2.32 GB)
 These data files will be processed and converted to tabular-format data files.
 
 
-* **Canadian Postal Codes** - *4 GB* - [Posal Code Matrix] (https://fusiontables.google.com/DataSource?docid=1H_cl-oyeG4FDwqJUTeI_aGKmmkJdPDzRNccp96M&hl=en_US&pli=1) 
+* **Canadian Postal Codes** - *48.8 MB* - [Posal Code Matrix] (https://fusiontables.google.com/DataSource?docid=1H_cl-oyeG4FDwqJUTeI_aGKmmkJdPDzRNccp96M&hl=en_US&pli=1) 
+
 Calculate the great circle distance and midpoint between two latitude/longitude points
 
 ```
