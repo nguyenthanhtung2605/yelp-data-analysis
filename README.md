@@ -82,12 +82,12 @@ until finished
 
 ## 4. RESULTS
 
-When it comes to convenience, efficiency and safety, subway has become one of the most chosen forms of transport for people in metropolis. Yet passengers do not have many reliable sources to locate their destination except for subway broadcasts because popular localization services (e.g. Global Positioning System (GPS) and wireless localization technologies) are often unavailable underground. Therefore, we propose MetroEar, a precise subway destination alarm application for smartphones. MetroEar records ambient contextual sound by smartphone microphones, and infers the state of passengers (including stop, running, and interchange) during a subway trip. Based on the states, MetroEar further provides alarm services when approaching near a pre-set location so that passengers can focus on their interest such as listening to music, reading books, or taking a nap. The app works perfectly on major smartphones and tablets running on the most popular operating systems Android.
+To be provided after finishing project.
 
 
 ## 5. DISCUSSION
 
-When it comes to convenience, efficiency and safety, subway has become one of the most chosen forms of transport for people in metropolis. Yet passengers do not have many reliable sources to locate their destination except for subway broadcasts because popular localization services (e.g. Global Positioning System (GPS) and wireless localization technologies) are often unavailable underground. Therefore, we propose MetroEar, a precise subway destination alarm application for smartphones. MetroEar records ambient contextual sound by smartphone microphones, and infers the state of passengers (including stop, running, and interchange) during a subway trip. Based on the states, MetroEar further provides alarm services when approaching near a pre-set location so that passengers can focus on their interest such as listening to music, reading books, or taking a nap. The app works perfectly on major smartphones and tablets running on the most popular operating systems Android.
+To be provided after finishing project.
 
 
 
