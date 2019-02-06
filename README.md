@@ -14,6 +14,7 @@ Yelp!Local is designed to be the solution for the unavailability of to search sp
 
 In order to achieve the goal, we have to set up a distance formula to calculate travel distance between users and each restaurant that matched the search. This means we need the longtitude and lattitude of all restaurants in Yelp's dataset and also user current location.
 Luckily, Yelp not only has the address of every restaurant but also its longitude and latitude. Hence, we decided to trust these value and use it for our calculation.
+
 **Context** 
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
