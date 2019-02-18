@@ -16,16 +16,17 @@ In order to achieve the goal, we have to set up a distance formula to calculate 
 
 **Context** 
 
-Being the type of being who usually go out to eat with friends, we frequently use both Yelp to find good restaurants around us. Although Yelp has a good database and reliable reviews with photos from millions of users, it doesn't provide any ability to narrow search around our current location. Thus, it would be nice to be able to perform local search on Yelp.
+Being the type of people who usually go out to eat with friends, we frequently use both Yelp to find good restaurants around us. Although Yelp has a good database and reliable reviews with photos from millions of users, it doesn't provide any ability to narrow search around our current location. Thus, it would be nice to be able to perform local search on Yelp and get most useful recommendations of go-to restaurants.
 
 **Objectives**
 
-We are insipred by that idea to create a simple console interface application to help Yelp gains local search function. The application will be able to not only gives recommendation based on location but also suggest similar resturants that may invoke interest from users. We will attempt to apply our understanding from this course on recommendation systems and frequent itemsets to develop an algorithm to achieve this goal.
+We are insipred by that idea to create a simple console interface application to provide users with useful recommendations. The application will be able to not only give recommendation based on locations but also other method of suggestion that may invoke interest from users. We will attempt to apply our understanding from this course on recommendation systems and frequent itemsets to develop an algorithm to achieve this goal.
 
 **Problem to Solve**
 
 Having said that, we need to identify main obstacles stopping us from achieving the goal. Firstly, prediction for similar clients has one major disadvantage is locality. With the limitation of not knowing the type of restaurants in Yelp public dataset, it is impossible to find similar taste reviewers from different city. Thus, we ought to figure out how to give recommendation when a user look up postal codes outside of his/her living city. 
-Secondly, in order to impliment frequent itemsets, the public dataset of Yelp also pose another probblem: it doesn't track how many time each users check-in each restaurants. Consequently, we have to figure out criteria to do substitute the number of visiting the restaurant in our algorithm. 
+
+Secondly and hopefully the last, the public dataset of Yelp also pose another probblem: it doesn't track how many time each users check-in each restaurants. Consequently, in order to impliment frequent itemsets, we have to figure out criteria to do substitute the number of visiting the restaurant in our algorithm. 
 
 **Related Work**
 
@@ -60,22 +61,13 @@ canadian-postal-codes (48.8 MB)
 ### 3.2 Methods
 
 **Technologies** 
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
+For this project, asides from the requirement of using Python and Apache Spark, we will possibly use Pandas library and scikit-learn if necessary.
 
 **Algorithms** 
 
-And repeat
-
-```
-until finished
-```
+Our algorithm can be described step-by-step as follow:
+ 1. Sorting users by ranking number of review and then pick randomly 5 people to present
+ 2. Mapping all businessId that has been reviewed by the chosen user, then deducting 
 
 ## 4. RESULTS
 
