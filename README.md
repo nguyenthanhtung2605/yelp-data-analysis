@@ -15,16 +15,20 @@ Yelp!Local is designed to be the solution for the unavailability of to search sp
 In order to achieve the goal, we have to set up a distance formula to calculate travel distance between users and each restaurant that matched the search,as well as develop an algorithm to search and suggest.
 
 **Context** 
+
 Being the type of being who usually go out to eat with friends, we frequently use both Yelp to find good restaurants around us. Although Yelp has a good database and reliable reviews with photos from millions of users, it doesn't provide any ability to narrow search around our current location. Thus, it would be nice to be able to perform local search on Yelp.
 
 **Objectives**
+
 We are insipred by that idea to create a simple console interface application to help Yelp gains local search function. The application will be able to not only gives recommendation based on location but also suggest similar resturants that may invoke interest from users. We will attempt to apply our understanding from this course on recommendation systems and frequent itemsets to develop an algorithm to achieve this goal.
 
 **Problem to Solve**
+
 Having said that, we need to identify main obstacles stopping us from achieving the goal. Firstly, prediction for similar clients has one major disadvantage is locality. With the limitation of not knowing the type of restaurants in Yelp public dataset, it is impossible to find similar taste reviewers from different city. Thus, we ought to figure out how to give recommendation when a user look up postal codes outside of his/her living city. 
 Secondly, in order to impliment frequent itemsets, the public dataset of Yelp also pose another probblem: it doesn't track how many time each users check-in each restaurants. Consequently, we have to figure out criteria to do substitute the number of visiting the restaurant in our algorithm. 
 
 **Related Work**
+
 So far, no project that are realatably noted.
 
 ## 3. MATERIALS AND METHODS
