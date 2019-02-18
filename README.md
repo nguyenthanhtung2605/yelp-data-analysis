@@ -108,10 +108,43 @@ For this project, asides from the requirement of using Python and Apache Spark, 
 
 **Algorithms** 
 
+Our application's simplified process is as below:
 
-Our algorithm can be described step-by-step as follow:
- 1. Sorting users by ranking number of review and then pick randomly 5 people to present
- 2. Mapping all businessId that has been reviewed by the chosen user, then deducting 
+01-AO: Application introduce 5 random Yelp users with in top 100 users with most review counts
+
+02-UI: User selects 1 of the random 5 credentials
+
+03-AO: Application shows the user's current location (City) and top 5 most reviewed postal codes of the user.
+
+04-UI: User enter the postal code of their desired location (arbitrary or by suggestion) in Canada
+
+05-AO: System displays the postal codes within 5-kilometer diameter and their associated restaurants. 
+
+06-A0: Application recommends top 10 restaurants with priorities as follows:
+
+       + by maxtrix completion
+       + by most visited
+       + by most rated
+       + by most reviewed
+       + by shortest distance
+
+07-UI: User selects one of the recommendations.
+
+08-AO: System shows top-5 restaurants (frequent itemset) reviewed by most users who also rated the selected restaurant.
+
+With the objectives is to feed data to each activity within the simplified process above. We maps the activities with the their related data set. Please see below:
+
+01-A0: (YELP04) yelp_academic_dataset_user.json --> to find top 100 users with most review counts
+02-UI: None noted
+03-AO: 1st (YELP03) yelp_academic_dataset_review.json --> to group business_id (restaurants) by user_id
+       2rd (YELP01) yelp_academic_dataset_business.json --> to map user_id with postal codes and city (using business_id) then find the the city and top 5 postal codes
+04-UI: None noted
+05-AO: 1st (LOPC) canadian-postal-codes --> to compute the distance between the input postal code with all postal codes in the list using latitudes and longtitudes --> then filter the postal code with distances equal or less than 5 kilometers.
+       2rd (YELP01) yelp_academic_dataset_business.json --> to map the postal codes with their associated restaurants (using postal code)
+06-AO: Take the dataframe from 05-A0 and for "matrix completion recommendations" we map the users who rated the restaurants in the dataframe and apply user-user colloborative filterings to recommend.
+07-UI: None noted
+08-AO: (YELP03) yelp_academic_dataset_review.json --> to find the top-5 business_id by applying frequent itemset algorithm.
+       (YELP01) yelp_academic_dataset_business --> to map the business_id with the restaurants' names and addresses.
 
 ## 4. RESULTS
 
