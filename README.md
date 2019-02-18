@@ -38,14 +38,48 @@ So far, no project that are realatably noted.
 
 * **Dataset** - *4 GB* - [Yelp Dataset](https://www.kaggle.com/yelp-dataset/yelp-dataset)
 
-A trove of reviews, businesses, users, tips, and check-in data.
 
 ```
-yelp_academic_dataset_business.json (131.87 MB)
-yelp_academic_dataset_checkin.json (389.87 MB)
-yelp_academic_dataset_review.json (4.98 GB)
-yelp_academic_dataset_tip.json (233.21 MB)
-yelp_academic_dataset_user.json (2.32 GB)
+(YELP01) yelp_academic_dataset_business.json (131.87 MB)
+
+Data fields in scope:
+
+business_id:1SWheh84yJXfytovILXOAQ
+name:Arizona Biltmore Golf Club
+address:2818 E Camino Acequia Drive
+city:Phoenix
+state:AZ
+postal_code:85016
+latitude:33.5221425
+longitude:-112.0184807
+stars:3
+review_count:5
+
+```
+
+```
+(YELP02) yelp_academic_dataset_checkin.json (389.87 MB)
+business_id:--1UhMGODdWsrMastO9DZw
+date:2016-04-26 19:49:16, 2016-08-30 18:36:57, 2016-10-15 02:45:18
+
+```
+(YELP03) yelp_academic_dataset_review.json (4.98 GB)
+
+review_id:Q1sbwvVQXV2734tPgoKj4Q
+user_id:hG7b0MtEbXx5QzbzE6C_VA
+business_id:ujmEBvifdJM6h6RLv4wQIg
+stars:1
+useful:6
+```
+
+```
+(YELP04) yelp_academic_dataset_user.json (2.32 GB)
+user_id:l6BmjZMeQD3rDxWUbiAiow
+name:Rashmi
+review_count:95
+useful:84
+friends:c78V-rj8NQcQjOI8KP3UEA, alRMgPcngYSCJ5naFRBz5g, ajcnq75Z5xxkvUSmmJ1bCg
+average_stars:4.03
 ```
 These data files will be processed and converted to tabular-format data files.
 
@@ -55,7 +89,15 @@ These data files will be processed and converted to tabular-format data files.
 Calculate the great circle distance and midpoint between two latitude/longitude points
 
 ```
-canadian-postal-codes (48.8 MB)
+(LOPC) canadian-postal-codes (48.8 MB)
+PostalCode: A0A0A0
+FSA: A0A
+Latitude: 48.56745
+Longitude: -54.843225
+PlaceName: Gander
+FSA1: A
+FSA-Province: 10
+AreaType: Rural
 ```
 
 ### 3.2 Methods
@@ -64,6 +106,7 @@ canadian-postal-codes (48.8 MB)
 For this project, asides from the requirement of using Python and Apache Spark, we will possibly use Pandas library and scikit-learn if necessary.
 
 **Algorithms** 
+
 
 Our algorithm can be described step-by-step as follow:
  1. Sorting users by ranking number of review and then pick randomly 5 people to present
