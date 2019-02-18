@@ -138,23 +138,28 @@ With the objectives is to feed data to each activity within the simplified proce
 
 02-UI: None noted
 
-03-AO: 1st (YELP03) yelp_academic_dataset_review.json --> to group business_id (restaurants) by user_id
+03-AO: 
+
+1st (YELP03) yelp_academic_dataset_review.json --> to group business_id (restaurants) by user_id
        
-       2rd (YELP01) yelp_academic_dataset_business.json --> to map user_id with postal codes and city (using business_id) then find the the city and top 5 postal codes
+2rd (YELP01) yelp_academic_dataset_business.json --> to map user_id with postal codes and city (using business_id) then find the the city and top 5 postal codes
 
 04-UI: None noted
 
-05-AO: 1st (LOPC) canadian-postal-codes --> to compute the distance between the input postal code with all postal codes in the list using latitudes and longtitudes --> then filter the postal code with distances equal or less than 5 kilometers.
+05-AO: 
 
-       2rd (YELP01) yelp_academic_dataset_business.json --> to map the postal codes with their associated restaurants (using postal code)
+1st (LOPC) canadian-postal-codes --> to compute the distance between the input postal code with all postal codes in the list using latitudes and longtitudes --> then filter the postal code with distances equal or less than 5 kilometers.
+
+2rd (YELP01) yelp_academic_dataset_business.json --> to map the postal codes with their associated restaurants (using postal code)
 
 06-AO: Take the dataframe from 05-A0 and for "matrix completion recommendations" we map the users who rated the restaurants in the dataframe and apply user-user colloborative filterings to recommend.
 
 07-UI: None noted
 
-08-AO: (YELP03) yelp_academic_dataset_review.json --> to find the top-5 business_id by applying frequent itemset algorithm.
+08-AO: 
+(YELP03) yelp_academic_dataset_review.json --> to find the top-5 business_id by applying frequent itemset algorithm.
        
-       (YELP01) yelp_academic_dataset_business --> to map the business_id with the restaurants' names and addresses.
+(YELP01) yelp_academic_dataset_business --> to map the business_id with the restaurants' names and addresses.
 
 ## 4. RESULTS
 
