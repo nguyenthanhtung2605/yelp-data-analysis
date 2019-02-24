@@ -19,8 +19,6 @@ def init_spark():
     return spark
 
 def json_to_dataframe(json_filename):
-
-
     spark = init_spark()
     target_df = spark.read.json(json_filename)
 
@@ -50,4 +48,19 @@ def most_useful_review_by_user(json_filename, user_id):
 
     return output
 
+def take_random_top_100_user():
+    target_df = json_to_dataframe("../data/yelp_academic_dataset_review.json")
+    
+    #take top 100 most comment users id
+    top_100_users = target_df.groupBy("user_id").count().orderBy(desc("count")).limit(100)
+    
+    #random 5 users from top 100
+    random_5_users = top_100_users.rdd.takeSample(False, 5, seed = 0)
+    
+    output = random_5_users
+    
+    return output
 
+print(take_random_top_100_user())
+    
+    
