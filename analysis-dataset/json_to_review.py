@@ -13,6 +13,10 @@ from helper_functions import json_to_dataframe
 
 def review_by_user(user_id):
     target_df = json_to_dataframe("../data/yelp_academic_dataset_review.json")
+    
+    output = target_df.filter(target_df.user_id == user_id)
+    
+    return output
 
 def is_canada_business(business_id, business_df):
     business_list_df = business_df.select('business_id')
