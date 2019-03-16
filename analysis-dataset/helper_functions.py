@@ -28,4 +28,8 @@ def csv_to_dataframe(csv_filename):
     spark = init_spark()
     target_df = spark.read.option("header", "true").csv(csv_filename)
     return target_df
-    
+
+def toCSVLineRDD(rdd):
+    a = rdd.map(lambda row: ",".join([str(elt) for elt in row]))\
+           .reduce(lambda x,y: os.linesep.join([x,y]))
+    return a + os.linesep
