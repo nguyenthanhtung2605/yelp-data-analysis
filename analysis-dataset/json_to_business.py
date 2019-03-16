@@ -11,9 +11,16 @@ from pyspark.ml.recommendation import ALS
 
 from helper_functions import json_to_dataframe
 
-def review_of_business(json_filename, business_id):
-    target_df = json_to_dataframe(json_filename)
-
-    output = target_df.filter(target_df.business_id == business_id)
-
+def is_canada_postal_code(postal_code, postal_df):
+    postal_df = postal_df.select('PostalCode')
+    distinct_postal_list = postal_df.distinct().collect()
+    output = True if postal_code in distinct_postal_list else False
     return output
+
+def get_canada_business(business_df):
+    business_df = business_df.withColumn('is_canada', is_canada_postal_code(business_df.postal_code,postal_df))
+    canada_business_df = business_df.filter(business_df.is_canada == True)
+    return canada_business_df
+
+
+
