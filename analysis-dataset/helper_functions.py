@@ -24,5 +24,7 @@ def json_to_dataframe(json_filename):
 
     return target_df
 
-    
-    
+def toCSVLineRDD(rdd):
+    a = rdd.map(lambda row: ",".join([str(elt) for elt in row]))\
+           .reduce(lambda x,y: os.linesep.join([x,y]))
+    return a + os.linesep

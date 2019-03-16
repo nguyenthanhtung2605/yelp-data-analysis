@@ -11,8 +11,8 @@ from pyspark.ml.recommendation import ALS
 
 from helper_functions import json_to_dataframe
 
-def review_by_user(json_filename, user_id):
-    target_df = json_to_dataframe(json_filename)
+def review_by_user(user_id):
+    target_df = json_to_dataframe("../data/yelp_academic_dataset_review.json")
 
     output = target_df.filter(target_df.user_id == user_id)
 

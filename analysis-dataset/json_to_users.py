@@ -9,24 +9,37 @@ from pyspark.sql.functions import desc
 from pyspark.ml.evaluation import RegressionEvaluator
 from pyspark.ml.recommendation import ALS
 
-from helper_functions import json_to_dataframe
+from helper_functions import json_to_dataframe, toCSVLineRDD
+from json_to_review import review_by_user
 
-def most_useful_review_by_user(json_filename, user_id):
-    target_df = json_to_dataframe(json_filename)
+def user_current_city(user_id):   
+    #take business_id of review comment
+    review_of_user = review_by_user(user_id)
+    business_id_of_review = review_of_user.select("business_id")
+    
+    #take out current city by most appearance 
+    business_df = json_to_dataframe("../data/yelp_academic_dataset_business.json")
+    business_id_by_user = business_df.join(business_id_of_review,\
+                                      "business_id", 'inner')
+    
+    user_top_business = business_id_by_user.groupBy("city").count().orderBy(desc("count")).limit(1)
+    user_curr_city = user_top_business.select("city")
+    
+    return toCSVLineRDD(user_curr_city.rdd)
+    
+def user_top_5_postal_code(user_id):   
+    #take business_id of review comment
+    review_of_user = review_by_user(user_id)
+    business_id_of_review = review_of_user.select("business_id")
+    
+    #take out top 5 postal code by most appearance in descending order
+    business_df = json_to_dataframe("../data/yelp_academic_dataset_business.json")
+    business_id_by_user = business_df.join(business_id_of_review,\
+                                      "business_id", 'inner')
+    
+    user_top_5_business = business_id_by_user.groupBy("postal_code").count().orderBy(desc("count")).limit(5)
+    user_top_5_postal_codes = user_top_5_business.select("postal_code")
+    
+    return toCSVLineRDD(user_top_5_postal_codes.rdd).split()
 
-    output = target_df.filter(target_df.user_id == user_id).orderBy(desc("useful"))
-
-    return output
-
-def take_random_top_100_user():
-    target_df = json_to_dataframe("../data/yelp_academic_dataset_review.json")
-    
-    #take top 100 most comment users id
-    top_100_users = target_df.groupBy("user_id").count().orderBy(desc("count")).limit(100)
-    
-    #random 5 users from top 100
-    random_5_users = top_100_users.rdd.takeSample(False, 5, seed = 0)
-    
-    output = random_5_users
-    
-    return output
+#print (user_top_5_postal_code("bLbSNkLggFnqwNNzzq-Ijw"))
