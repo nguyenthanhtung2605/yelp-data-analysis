@@ -8,20 +8,18 @@ from pyspark.sql.functions import lit
 from pyspark.sql.functions import desc
 from pyspark.ml.evaluation import RegressionEvaluator
 from pyspark.ml.recommendation import ALS
+from pyspark.sql.types import IntegerType
+from pyspark.sql.functions import udf
+from pyspark.sql.functions import col
+
 
 from helper_functions import json_to_dataframe, init_spark, toCSVLineRDD
 from math import radians, sin, cos, acos
 
 
-def is_canada_postal_code(postal_code, postal_df):
-    postal_df = postal_df.select('PostalCode')
-    distinct_postal_list = postal_df.distinct().collect()
-    output = True if postal_code in distinct_postal_list else False
-    return output
-
-def get_canada_business(business_df):
-    business_df = business_df.withColumn('is_canada', is_canada_postal_code(business_df.postal_code,postal_df))
-    canada_business_df = business_df.filter(business_df.is_canada == True)
+def get_canada_business(business_df, all_province):
+    canada_business_df = business_df.filter(business_df.state.isin(all_province))
+    canada_business_df.show()
     return canada_business_df
 
 def get_business_info(business_id):
@@ -58,5 +56,3 @@ def business_around_5_km(target_id, canadian_business):
 
     
     return business_postal_code.show()
-
-print (business_around_5_km("68dUKd8_8liJ7in4aWOSEA"))
