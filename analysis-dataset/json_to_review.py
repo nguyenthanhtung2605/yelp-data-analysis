@@ -11,11 +11,8 @@ from pyspark.ml.recommendation import ALS
 
 from helper_functions import json_to_dataframe
 
-<<<<<<< HEAD
-=======
 def review_by_user(user_id):
     target_df = json_to_dataframe("../data/yelp_academic_dataset_review.json")
->>>>>>> 517d439f1a00f16b681e852ccac865d7824a6929
 
 def is_canada_business(business_id, business_df):
     business_list_df = business_df.select('business_id')

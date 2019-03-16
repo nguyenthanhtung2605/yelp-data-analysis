@@ -55,9 +55,7 @@ def business_around_5_km(target_id, canadian_business):
     #will change when method done @@@@@@@@@@@@@
     canadian_business = json_to_dataframe("../data/yelp_academic_dataset_business.json")\
                                             .filter("state" == "ON")
-                                            
-    business_within_5_km = canadian_business.flatMap(lambda row: row\
-                                                     if postal_code_distance())
+
     
     return business_postal_code.show()
 
