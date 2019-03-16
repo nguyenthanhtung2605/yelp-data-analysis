@@ -14,6 +14,19 @@ from pyspark.sql.functions import udf
 from helper_functions import json_to_dataframe
 
 
+def review_by_user(user_id):
+    target_df = json_to_dataframe("../data/yelp_academic_dataset_review.json")
+    
+    output = target_df.filter(target_df.user_id == user_id)
+    
+    return output
+
+def is_canada_business(business_id, business_df):
+    business_list_df = business_df.select('business_id')
+    distinct_business_id_list = business_list_df.distinct().collect()
+    output = True if business_id in distinct_business_id_list else False
+    return output
+
 def get_canada_business_review(review_df, canada_business_df):
     canada_business_df = canada_business_df.select('business_id')
     distinct_canada_business_id_list_dict = canada_business_df.distinct().collect()
