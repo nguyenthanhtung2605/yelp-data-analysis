@@ -21,7 +21,6 @@ def init_spark():
 def json_to_dataframe(json_filename):
     spark = init_spark()
     target_df = spark.read.json(json_filename)
-
     return target_df
 
 def csv_to_dataframe(csv_filename):

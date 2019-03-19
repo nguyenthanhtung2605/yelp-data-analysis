@@ -5,9 +5,9 @@ import json_to_users as ju
 import json_to_checkin as jc
 
 
-# canada_postal_df = hf.csv_to_dataframe('../data/tbl-postal-code.csv')
-business_df = hf.json_to_dataframe('../data/yelp_academic_dataset_business.json')
-review_df = hf.json_to_dataframe('../data/yelp_academic_dataset_review.json')
+canada_ptcode_df = hf.csv_to_dataframe('../data/tbl-postal-code.csv')
+# business_df = hf.json_to_dataframe('../data/yelp_academic_dataset_business.json')
+# review_df = hf.json_to_dataframe('../data/yelp_academic_dataset_review.json')
 # users_df = hf.json_to_dataframe('../data/yelp_academic_dataset_user.json')
 
 all_province = [ "AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "YT" ]
@@ -50,3 +50,7 @@ selected_postal_code = five_random_user[choosen_postal_code_number - 1]
 '''
 
 selected_postal_code = 'M8X 1E9'
+ptcode1 = selected_postal_code.replace(' ', '')
+ptcode2 = 'M8X1G1'
+print(jb.postal_code_distance(ptcode1, ptcode2, canada_ptcode_df))
+

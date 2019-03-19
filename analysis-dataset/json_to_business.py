@@ -29,34 +29,23 @@ def get_business_info(business_id):
     output = target_df.filter(target_df.business_id == business_id)
     return output
 
-def postal_code_distance(postal_code1, postal_code2):
-    spark = init_spark()
+def postal_code_distance(ptcode1, ptcode2, canada_ptcode_df):
     
-    if isinstance(postal_code2, str):
-        postal_code2 = postal_code2
-    else:
-        postal_code2 = postal_code2
-        print (type(postal_code2))
+    ptc1 = canada_ptcode_df.filter(canada_ptcode_df['PostalCode'] == str(ptcode1))
+    ptc2 = canada_ptcode_df.filter(canada_ptcode_df['PostalCode'] == str(ptcode2))
     
-    print (postal_code1, " and ", postal_code2)
-    postal_code_df = spark.read.csv("../data/tbl-postal-code.csv", header="true")
+    latitude_ptc1 = radians(float(toCSVLineRDD(ptc1.select("Latitude").rdd)))
+    longitude_ptc2 = radians(float(toCSVLineRDD(ptc1.select("Longitude").rdd)))
     
-    postal_1 = postal_code_df.filter(postal_code_df["PostalCode"] == postal_code1)
-    postal_2 = postal_code_df.filter(postal_code_df["PostalCode"] == postal_code2)
+    lat_postal_2 = radians(float(toCSVLineRDD(ptc2.select("Latitude").rdd)))
+    lon_postal_2 = radians(float(toCSVLineRDD(ptc2.select("Longitude").rdd)))
     
-    lat_postal_1 = radians(float(toCSVLineRDD(postal_1.select("Latitude").rdd)))
-    lon_postal_1 = radians(float(toCSVLineRDD(postal_1.select("Longitude").rdd)))
-    
-    print(postal_2.select("Latitude").rdd.collect())
-    lat_postal_2 = radians(float(toCSVLineRDD(postal_2.select("Latitude").rdd)))
-    lon_postal_2 = radians(float(toCSVLineRDD(postal_2.select("Longitude").rdd)))
-    
-    distance = 6371.01 * acos(sin(lat_postal_1)*sin(lat_postal_2) +
-                              cos(lat_postal_1)*cos(lat_postal_2)*cos(lon_postal_1 - lon_postal_2))
+    distance = 6371.01 * acos(sin(latitude_ptc1)*sin(lat_postal_2) +
+                              cos(latitude_ptc1)*cos(lat_postal_2)*cos(longitude_ptc2 - lon_postal_2))
     
     return distance
 
-def business_around_5_km(target_id): #canadian_business):
+def get_ptcode_within_perimeter(selected_ptcode, input_distance, canada_ptcode_df):
     business_info = get_business_info(target_id)
     business_postal_code = business_info.select("postal_code")
     string_business_postal_code = toCSVLineRDD(business_postal_code.rdd).strip()
