@@ -26,9 +26,7 @@ def get_canada_business(business_df, all_province):
 
 def get_business_info(business_id):
     target_df = json_to_dataframe("../data/yelp_academic_dataset_business.json")
-    
     output = target_df.filter(target_df.business_id == business_id)
-
     return output
 
 def postal_code_distance(postal_code1, postal_code2):
