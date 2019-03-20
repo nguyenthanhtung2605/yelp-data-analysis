@@ -20,11 +20,13 @@ def init_spark():
 
 def json_to_dataframe(json_filename):
     spark = init_spark()
+    spark.sparkContext.setLogLevel('WARN')
     target_df = spark.read.json(json_filename)
     return target_df
 
 def csv_to_dataframe(csv_filename):
     spark = init_spark()
+    spark.sparkContext.setLogLevel('WARN')
     target_df = spark.read.option("header", "true").csv(csv_filename)
     return target_df
 

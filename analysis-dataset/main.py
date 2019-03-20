@@ -3,9 +3,18 @@ import json_to_business as jb
 import json_to_review as jr
 import json_to_users as ju
 import json_to_checkin as jc
+from pyspark.sql.functions import col, trim
 
+canada_ptcode_df_original = hf.csv_to_dataframe('../data/tbl-postal-code.csv')
+trim_df1 = canada_ptcode_df_original.withColumn('TrimPostalCode',trim(canada_ptcode_df_original.PostalCode))
+trim_df2 = trim_df1.withColumn('TrimLatitude',trim(trim_df1.Latitude))
+trim_df3 = trim_df2.withColumn('TrimLongitude',trim(trim_df2.Longitude))
+trim_df4 = trim_df3.withColumn('FloatLatitude',trim_df3.TrimLatitude.cast('float'))
+trim_df5 = trim_df4.withColumn('FloatLongitude',trim_df4.TrimLongitude.cast('float'))
+trim_df6 = trim_df5.withColumnRenamed("TrimPostalCode", "postal_code").withColumnRenamed\
+    ("FloatLatitude", "fl_latitude").withColumnRenamed("TrimLongitude", "fl_longitude")
+canada_ptcode_df = trim_df6.select(['postal_code','fl_latitude','fl_longitude'])
 
-canada_ptcode_df = hf.csv_to_dataframe('../data/tbl-postal-code.csv')
 # business_df = hf.json_to_dataframe('../data/yelp_academic_dataset_business.json')
 # review_df = hf.json_to_dataframe('../data/yelp_academic_dataset_review.json')
 # users_df = hf.json_to_dataframe('../data/yelp_academic_dataset_user.json')
@@ -50,7 +59,7 @@ selected_postal_code = five_random_user[choosen_postal_code_number - 1]
 '''
 
 selected_postal_code = 'M8X 1E9'
-ptcode1 = selected_postal_code.replace(' ', '')
-ptcode2 = 'M8X1G1'
-print(jb.postal_code_distance(ptcode1, ptcode2, canada_ptcode_df))
+
+ptcodes_within_perimeter_list = jb.get_ptcode_within_perimeter(selected_postal_code, 3, canada_ptcode_df)
+canada_business_in_perimeter_df = jb.canada_business_in_perimeter_df(business_df, ptcodes_within_perimeter_list)
 
