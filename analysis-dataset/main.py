@@ -15,7 +15,7 @@ trim_df6 = trim_df5.withColumnRenamed("TrimPostalCode", "postal_code").withColum
     ("FloatLatitude", "fl_latitude").withColumnRenamed("TrimLongitude", "fl_longitude")
 canada_ptcode_df = trim_df6.select(['postal_code','fl_latitude','fl_longitude'])
 
-# business_df = hf.json_to_dataframe('../data/yelp_academic_dataset_business.json')
+business_df = hf.json_to_dataframe('../data/yelp_academic_dataset_business.json')
 # review_df = hf.json_to_dataframe('../data/yelp_academic_dataset_review.json')
 # users_df = hf.json_to_dataframe('../data/yelp_academic_dataset_user.json')
 

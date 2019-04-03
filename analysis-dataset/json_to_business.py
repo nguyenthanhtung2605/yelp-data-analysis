@@ -75,9 +75,11 @@ def get_ptcode_within_perimeter(input_ptcode, input_distance, canada_ptcode_df):
     ptcodes_within_perimeter.show()
     ptcodes_within_perimeter_dict = ptcodes_within_perimeter.select('postal_code').collect()
     ptcodes_in_perimeter_list = list(map(lambda x: x['postal_code'], ptcodes_within_perimeter_dict))
-    print (len(ptcodes_in_perimeter_list))
 
-    return ptcodes_in_perimeter_list
+    output_list = list(map(lambda x: (x[0:3])+' '+str(x[3:]),ptcodes_in_perimeter_list))
+    print(len(output_list))
+    print (output_list)
+    return output_list
 
 def canada_business_in_perimeter_df(business_df, ptcodes_in_perimeter_list):
     canada_business_in_perimeter_df = business_df.filter(business_df.postal_code.isin(ptcodes_in_perimeter_list))
