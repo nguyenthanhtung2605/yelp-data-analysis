@@ -1,0 +1,19 @@
+when distance = 100km and rank = 70:
+basic als recommender: 1.7229281022034673
+global average recommender: 1.3534679294158534
+als with bias recommender: 3.3598917078679515
+
+when distance=10 km and rank = 70:
+basic als recommender: 1.852597978436849
+global average recommender: 1.3290577867732063
+als with bias recommender: 3.3228521622487506
+
+when distance = 5km and rank = 70:
+basic als recommender: 2.14784709496682
+global average recommender: 1.4586943381036852
+als with bias recommender: 3.0268585697798684
+
+when distance = 3km and rank = 70:
+basic als recommender: 2.127391174906966
+global average recommender: 1.435300564671421
+als with bias recommender: 3.0424890760189744
