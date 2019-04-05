@@ -10,7 +10,7 @@ from pyspark.sql.functions import desc
 from pyspark.ml.evaluation import RegressionEvaluator
 from pyspark.ml.recommendation import ALS
 from pyspark.sql.types import FloatType
-from pyspark.sql.functions import col
+from pyspark.sql.functions import col,abs
 
 from pyspark.sql.functions import udf
 from pyspark.sql.types import StringType
@@ -83,7 +83,6 @@ def global_average_recommender(review_df, seed):
     rating_mean = training.groupby().mean('stars').collect()[0][0]
         
     global_average = rating_mean
-    
     test_with_avg = test.withColumn('prediction', lit(global_average))
     
     evaluator = RegressionEvaluator(metricName="rmse", labelCol="stars",predictionCol="prediction")
@@ -140,14 +139,13 @@ def als_with_bias_recommender(review_df, seed):
               coldStartStrategy="drop")
     model_with_user_item_interaction = als.fit(output)
     predictions = model_with_user_item_interaction.transform(test)
-    
     predictions = predictions.join(user_mean, "user_id", 'inner')
     predictions = predictions.join(item_mean, "business_id", 'inner')
     predictions = predictions.select("user_id","business_id","stars","prediction",
                                      "user_mean","item_mean")
     
-    new_output = predictions.withColumn("new_prediction", predictions.prediction 
-                                   + predictions.user_mean + predictions.item_mean - global_average)
+    new_output = predictions.withColumn("new_prediction", predictions.prediction
+                                        + predictions.user_mean + predictions.item_mean - global_average)
     
     #new_output.show()
     

@@ -6,6 +6,7 @@ import json_to_checkin as jc
 from pyspark.sql.functions import col, trim
 
 import recommendation_functions as rf
+import frequent_itemset as fi
 import time
 canada_ptcode_df_original = hf.csv_to_dataframe('../data/tbl-postal-code.csv')
 trim_df1 = canada_ptcode_df_original.withColumn('TrimPostalCode',trim(canada_ptcode_df_original.PostalCode))
@@ -68,9 +69,10 @@ canada_business_in_perimeter_df = jb.canada_business_in_perimeter_df(business_df
 canadian_business_in_perimeter_id_df = canada_business_in_perimeter_df.select('business_id').withColumnRenamed('business_id','businessId')
 canada_business_review_df = review_df.join(canadian_business_in_perimeter_id_df, review_df.business_id == canadian_business_in_perimeter_id_df.businessId, 'inner').drop('businessId')
 
-print(rf.basic_als_recommender(canada_business_review_df,123))
-print(rf.global_average_recommender(canada_business_review_df,123))
-print(rf.als_with_bias_recommender(canada_business_review_df,123))
+#print(rf.basic_als_recommender(canada_business_review_df,123))
+#print(rf.global_average_recommender(canada_business_review_df,123))
+#print(rf.als_with_bias_recommender(canada_business_review_df,123))
+print(fi.interests(canada_business_review_df,15, 0.05, 0.1))
 
 end = time.time()
 hours, rem = divmod(end-start, 3600)

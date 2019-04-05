@@ -17,3 +17,10 @@ when distance = 3km and rank = 70:
 basic als recommender: 2.127391174906966
 global average recommender: 1.435300564671421
 als with bias recommender: 3.0424890760189744
+
+Side note:
+distance = 3:
+global average: 3.51190787758189743
+global average recommender: 1.435300564671421
+Number of value 2-5 : 2014
+Number of value outside of 2-5: 2523
