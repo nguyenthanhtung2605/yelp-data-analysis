@@ -22,5 +22,15 @@ Side note:
 distance = 3:
 global average: 3.51190787758189743
 global average recommender: 1.435300564671421
+
+Number of business: 192609
+Number of review: 6685900
+Number of user: 1637138
+
+Number of business that chosen user have review: 585
+
+Number of canadian business: 50644
+Number of canadian business review: 1063142
+
 Number of value 2-5 : 2014
 Number of value outside of 2-5: 2523
