@@ -42,9 +42,9 @@ top_100_users = ju.get_top_n_canada_users(100, canada_business_review_df)
 print('Please select one of 5 random Yelp Canada users displayed below:\n')
 ## pick 5 random users from top 100 user dataframe
 five_random_user = ju.pick_n_random_users(5, top_100_users)
-'''
 
-'''
+
+
 # >>> 02-UI: User selects 1 of the random 5 credentials <<
 
 choosen_user_number = input("What is your selection? Please enter 1 to 5 :")
@@ -61,26 +61,27 @@ print(len(business_id_list_of_user))
 ju.current_city_of_user(selected_user, business_id_list_of_user,business_df)
 
 top_five_most_visited_postal_codes = ju.user_top_5_postal_code(selected_user, 5, business_id_list_of_user,business_df)
-'''
+
 # =============================================================================
 # choosen_postal_code_number = input("What is your selection? Please enter 1 to 5 :")
 # selected_postal_code = five_random_user[choosen_postal_code_number - 1]
 # =============================================================================
 
-
+'''
 start = time.time()
 selected_postal_code = 'M8X 1E9'
 
-ptcodes_within_perimeter_list = jb.get_ptcode_within_perimeter(selected_postal_code, 10, canada_ptcode_df)
+ptcodes_within_perimeter_list = jb.get_ptcode_within_perimeter(selected_postal_code, 5, canada_ptcode_df)
+print(len(ptcodes_within_perimeter_list))
 canada_business_in_perimeter_df = jb.canada_business_in_perimeter_df(business_df, ptcodes_within_perimeter_list)
 
 canadian_business_in_perimeter_id_df = canada_business_in_perimeter_df.select('business_id').withColumnRenamed('business_id','businessId')
 canada_business_review_df = review_df.join(canadian_business_in_perimeter_id_df, review_df.business_id == canadian_business_in_perimeter_id_df.businessId, 'inner').drop('businessId')
 
-print(rf.basic_als_recommender(canada_business_review_df,123))
-print(rf.global_average_recommender(canada_business_review_df,123))
-print(rf.als_with_bias_recommender(canada_business_review_df,123))
-#print(fi.interests(canada_business_review_df,15, 0.1, 0.1))
+#print(rf.basic_als_recommender(canada_business_review_df,123))
+#print(rf.global_average_recommender(canada_business_review_df,123))
+#print(rf.als_with_bias_recommender(canada_business_review_df,123))
+print(fi.interests(canada_business_review_df,15, 0.1, 0.1))
 
 end = time.time()
 hours, rem = divmod(end-start, 3600)
