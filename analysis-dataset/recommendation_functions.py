@@ -56,6 +56,7 @@ def basic_als_recommender(review_df, seed):
 
     # Evaluate the model by computing the RMSE on the test data
     predictions = model.transform(test)
+    predictions.orderBy('prediction',ascending = False).show()
     evaluator = RegressionEvaluator(metricName="rmse", labelCol="stars",
                                     predictionCol="prediction")
     output_rmse = evaluator.evaluate(predictions)
@@ -84,7 +85,7 @@ def global_average_recommender(review_df, seed):
         
     global_average = rating_mean
     test_with_avg = test.withColumn('prediction', lit(global_average))
-    
+    print(test_with_avg.orderBy('stars', ascending = False).select('business_id').rdd.take(5))
     evaluator = RegressionEvaluator(metricName="rmse", labelCol="stars",predictionCol="prediction")
     output_rmse = evaluator.evaluate(test_with_avg)
 
